@@ -212,6 +212,16 @@ rake test
 以下のようなテスト
 
 ```ruby
+def f x, y
+  x - y
+end
+
+def g x, y
+  x / y
+end
+```
+
+```ruby
 test 'power_assert' do
   assert { g(f(14, 2), 4) == 3.14.to_i + 0.14 }
 end

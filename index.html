@@ -228,6 +228,13 @@ task <span class="st">default: :test</span></code></pre></div>
 <div id="power_assertこそパワー" class="slide section level1">
 <h1>power_assertこそパワー</h1>
 <p>以下のようなテスト</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">def</span> f x, y
+  x - y
+<span class="kw">end</span>
+
+<span class="kw">def</span> g x, y
+  x / y
+<span class="kw">end</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">test <span class="st">&#39;power_assert&#39;</span> <span class="kw">do</span>
   assert { g(f(<span class="dv">14</span>, <span class="dv">2</span>), <span class="dv">4</span>) == <span class="fl">3.14</span>.to_i + <span class="fl">0.14</span> }
 <span class="kw">end</span></code></pre></div>
