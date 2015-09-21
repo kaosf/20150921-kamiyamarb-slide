@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="ka" />
+  <meta name="date" content="2015-09-21" />
+  <title>kamiyama.rb 2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">kamiyama.rb 2</h1>
+  <p class="author">
+ka
+  </p>
+  <p class="date">2015-09-21</p>
+</div>
+<div id="author" class="slide section level1">
+<h1>Author</h1>
+<p>ka</p>
+<p>Website: <a href="http://www.kaosfield.net">kaosfield</a></p>
+<p>Twitter: <a href="https://twitter.com/ka_">ka</a></p>
+<p>GitHub: <a href="https://github.com/kaosf">kaosf</a></p>
+</div>
+<div id="はじめに" class="slide section level1">
+<h1>はじめに</h1>
+<p>このスライドは公開されています</p>
+<p>このスライドのリポジトリは<a href="https://github.com/kaosf/20150921-kamiyamarb-slide" class="uri">https://github.com/kaosf/20150921-kamiyamarb-slide</a>にあります</p>
+<p>間違いを発見したら Issue あるいは PullRequest を下さると嬉しいです</p>
+<h3 id="license">License</h3>
+<p><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
+<p>Copyright (C) 2015 ka</p>
+</div>
+<div id="去る8月30日" class="slide section level1">
+<h1>去る8月30日</h1>
+<p>tokushima.rb会場にて</p>
+<ul class="incremental">
+<li>dan「神山.rbやりますー発表してくれる人ー」</li>
+<li>か「まぁネタが無いわけじゃないしやってもいいですけど…」</li>
+<li>dan「じゃあもう書いて告知しますね」</li>
+<li>か「ファッ！？」</li>
+</ul>
+</div>
+<div id="発表するのはやぶさかではない" class="slide section level1">
+<h1>発表するのはやぶさかではない</h1>
+<ul class="incremental">
+<li>か「言うて発表するのそないに嫌いちゃうねん」</li>
+<li>か「けどOSS普及協議会のスライド作るんもあるし…」</li>
+<li>か「大体なんで毎回tokushimar.rbで発表してるのうちだけやねん…」</li>
+<li>このままではヘイトが急上昇してしまう</li>
+</ul>
+</div>
+<div id="ニコ動でここ数年見てる動画" class="slide section level1">
+<h1>ニコ動でここ数年見てる動画</h1>
+<p>ひたすら楽して○○シリーズ</p>
+<ul class="incremental">
+<li>ひたすら楽してFF5</li>
+<li>ひたすら楽してFF6</li>
+<li>ひたすら楽してFF4</li>
+<li>ひたすら楽してFF9 ←現在Part2まで上がってる</li>
+<li><span style="color:#ddd">おうロマサガ3あくしろよ</span></li>
+</ul>
+</div>
+<div id="ひたすら楽して神山.rb" class="slide section level1">
+<h1>ひたすら楽して神山.rb</h1>
+<ul class="incremental">
+<li>ぬわあああああん疲れたもおおおおん</li>
+<li>限りなく楽をしてスライドを作ろう</li>
+<li>スライドの内容を全部コピペで済ませよう</li>
+<li>推敲するのやめよう</li>
+<li>それっぽいページだけパパパっと作って終わり！</li>
+<li>多分これが一番楽だと思います</li>
+</ul>
+</div>
+<div id="section" class="slide section level1">
+<h1></h1>
+<p>はいよーいスタート</p>
+</div>
+<div id="プリキュアハッカソンに参加してきました" class="slide section level1">
+<h1>プリキュアハッカソンに参加してきました</h1>
+<p><a href="http://connpass.com/event/17280/">プリキュアハッカソン 3 - connpass</a></p>
+<p><img src="precure-hackathon-3.png" height="300px"></p>
+<p>プリキュアの映画を見ながらテンションを高めることにより進捗を得る</p>
+<p><strong>最高感ある</strong></p>
+</div>
+<div id="rubicure_fuzzy_match" class="slide section level1">
+<h1>rubicure_fuzzy_match</h1>
+<p>Rubicureというgemに曖昧検索機能を追加するgemを作った</p>
+<p>本体を改造するのではなく後からメソッドを追加する方針</p>
+<p>それを読み込むだけでrubicureもそのまま使えるし追加機能も使える</p>
+<p><code>rspec-rails</code>とか<code>factory_girl_rails</code>のノリ</p>
+<ul>
+<li>
+リポジトリ: <a href="https://github.com/kaosf/rubicure_fuzzy_match">kaosf/rubicure_fuzzy_match</a>
+</li>
+<li>
+スライド: <a href="http://kaosf.github.io/rubicure-fuzzy-match-slide">Rubicureをあいまい検索対応強化してみた</a>
+</li>
+</ul>
+</div>
+<div id="rubicureseriese-に-fuzzy_find-が追加される" class="slide section level1">
+<h1><code>Rubicure::Seriese</code> に <code>fuzzy_find</code> が追加される</h1>
+<div class="incremental">
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;yesgogo&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;yes_gogo&quot;, :title=&gt;&quot;Yes！ プリキュア5 Go Go！&quot;, :started_date=&gt;Sun, 03 Feb 2008, :ended_date=&gt;Sun, 25 Jan 2009, :girls=&gt;[&quot;cure_dream&quot;, &quot;cure_rouge&quot;, &quot;cure_lemonade&quot;, &quot;cure_mint&quot;, &quot;cure_aqua&quot;, &quot;milky_rose&quot;]}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;yes gogo&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;yes_gogo&quot;, :title=&gt;&quot;Yes！ プリキュア5 Go Go！&quot;, :started_date=&gt;Sun, 03 Feb 2008, :ended_date=&gt;Sun, 25 Jan 2009, :girls=&gt;[&quot;cure_dream&quot;, &quot;cure_rouge&quot;, &quot;cure_lemonade&quot;, &quot;cure_mint&quot;, &quot;cure_aqua&quot;, &quot;milky_rose&quot;]}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;5 gogo&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;yes_gogo&quot;, :title=&gt;&quot;Yes！ プリキュア5 Go Go！&quot;, :started_date=&gt;Sun, 03 Feb 2008, :ended_date=&gt;Sun, 25 Jan 2009, :girls=&gt;[&quot;cure_dream&quot;, &quot;cure_rouge&quot;, &quot;cure_lemonade&quot;, &quot;cure_mint&quot;, &quot;cure_aqua&quot;, &quot;milky_rose&quot;]}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;555&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;yes_gogo&quot;, :title=&gt;&quot;Yes！ プリキュア5 Go Go！&quot;, :started_date=&gt;Sun, 03 Feb 2008, :ended_date=&gt;Sun, 25 Jan 2009, :girls=&gt;[&quot;cure_dream&quot;, &quot;cure_rouge&quot;, &quot;cure_lemonade&quot;, &quot;cure_mint&quot;, &quot;cure_aqua&quot;, &quot;milky_rose&quot;]}</span></code></pre></div>
+</div>
+</div>
+<div id="かなり適当な検索で作品を取ってこれる" class="slide section level1">
+<h1>かなり適当な検索で作品を取ってこれる</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;ss&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;splash_star&quot;, :title=&gt;&quot;ふたりはプリキュア Splash☆Star&quot;, :started_date=&gt;Sun, 05 Feb 2006, :ended_date=&gt;Sun, 28 Jan 2007, :girls=&gt;[&quot;cure_bloom&quot;, &quot;cure_egret&quot;]}</span>
+
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;ゴプリ&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;go_princess&quot;, :title=&gt;&quot;Go!プリンセスプリキュア&quot;, :started_date=&gt;Sun, 01 Feb 2015, :girls=&gt;[&quot;cure_flora&quot;, &quot;cure_mermaid&quot;, &quot;cure_twinkle&quot;, &quot;cure_scarlett&quot;]}</span>
+
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;ハト&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;heart_catch&quot;, :title=&gt;&quot;ハートキャッチプリキュア！&quot;, :started_date=&gt;Sun, 07 Feb 2010, :ended_date=&gt;Sun, 30 Jan 2011, :girls=&gt;[&quot;cure_blossom&quot;, &quot;cure_marine&quot;, &quot;cure_sunshine&quot;, &quot;cure_moonlight&quot;]}</span>
+
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.fuzzy_find <span class="st">&#39;姫プリ&#39;</span>
+<span class="co">#=&gt; {:series_name=&gt;&quot;go_princess&quot;, :title=&gt;&quot;Go!プリンセスプリキュア&quot;, :started_date=&gt;Sun, 01 Feb 2015, :girls=&gt;[&quot;cure_flora&quot;, &quot;cure_mermaid&quot;, &quot;cure_twinkle&quot;, &quot;cure_scarlett&quot;]}</span></code></pre></div>
+</div>
+<div id="作品名の正規化" class="slide section level1">
+<h1>作品名の正規化</h1>
+<p><code>Rubicure::Seriese.regularize</code> メソッドで正規化が出来る</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize <span class="st">&#39;splashstar&#39;</span> <span class="co">#=&gt; &quot;ふたりはプリキュア Splash☆Star&quot;</span>
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize <span class="st">&#39;スマプリ&#39;</span> <span class="co">#=&gt; &quot;スマイルプリキュア！&quot;</span>
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize <span class="st">&#39;スマイプリ&#39;</span> <span class="co">#=&gt; &quot;スマイルプリキュア！&quot;</span>
+<span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize <span class="st">&#39;ハピチャ&#39;</span> <span class="co">#=&gt; &quot;ハピネスチャージプリキュア！&quot;</span></code></pre></div>
+</div>
+<div id="fuzzy_matchという面白そうなgem" class="slide section level1">
+<h1>fuzzy_matchという面白そうなgem</h1>
+<p>あいまい検索が出来るようになる</p>
+<p><a href="https://github.com/seamusabshere/fuzzy_match">seamusabshere/fuzzy_match</a></p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">require <span class="st">&#39;fuzzy_match&#39;</span>
+
+fm = <span class="dt">FuzzyMatch</span>.new [<span class="st">&#39;プリキュア&#39;</span>, <span class="st">&#39;ナージャ&#39;</span>]
+fm.find <span class="st">&#39;ナンジャ&#39;</span> <span class="co">#=&gt; &quot;ナージャ&quot;</span>
+fm.find <span class="st">&#39;プリプリ&#39;</span> <span class="co">#=&gt; &quot;プリキュア&quot;</span>
+fm.find <span class="st">&#39;どれみ&#39;</span>   <span class="co">#=&gt; nil</span></code></pre></div>
+</div>
+<div id="test-unit" class="slide section level1">
+<h1>test-unit</h1>
+<p>RSpecを無理して使う時代ではもう無い</p>
+<p>test-unitを使ってみている</p>
+<p><a href="http://qiita.com/repeatedly/items/727b08599d87af7fa671">Ruby - Test::Unitでテストを書く - Qiita</a></p>
+</div>
+<div id="ディレクトリ構成" class="slide section level1">
+<h1>ディレクトリ構成</h1>
+<pre><code>+ lib/
+  - rubicure_fuzzy_match.rb
++ test/
+  - test_rubicure_fuzzy_match.rb
+- Rakefile</code></pre>
+</div>
+<div id="rakefile" class="slide section level1">
+<h1>Rakefile</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">require <span class="st">&quot;bundler/gem_tasks&quot;</span>
+require <span class="st">&quot;rake/testtask&quot;</span>
+
+<span class="dt">Rake</span>::<span class="dt">TestTask</span>.new <span class="kw">do</span> |t|
+  t.libs &lt;&lt; <span class="st">&quot;test&quot;</span>
+  t.test_files = <span class="dt">Dir</span>[<span class="st">&quot;test/**/test_*.rb&quot;</span>]
+  t.verbose = <span class="dv">true</span>
+<span class="kw">end</span>
+
+task <span class="st">default: :test</span></code></pre></div>
+<p>参考: <a href="http://docs.ruby-lang.org/ja/2.2.0/class/Rake=3a=3aTestTask.html">class Rake::TestTask (Ruby 2.2.0)</a></p>
+</div>
+<div id="rakefile-1" class="slide section level1">
+<h1>Rakefile</h1>
+<p>これで</p>
+<pre class="sh"><code>rake</code></pre>
+<p>ないし</p>
+<pre class="sh"><code>rake test</code></pre>
+<p>でテストが走る</p>
+</div>
+<div id="power_assertこそパワー" class="slide section level1">
+<h1>power_assertこそパワー</h1>
+<p>以下のようなテスト</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">test <span class="st">&#39;power_assert&#39;</span> <span class="kw">do</span>
+  assert { g(f(<span class="dv">14</span>, <span class="dv">2</span>), <span class="dv">4</span>) == <span class="fl">3.14</span>.to_i + <span class="fl">0.14</span> }
+<span class="kw">end</span></code></pre></div>
+<p><strong>ブロックの評価結果がtrueになることをassert</strong> …というノリで読めば良い</p>
+</div>
+<div id="見よこの美しいエラー表示を" class="slide section level1">
+<h1>見よこの美しいエラー表示を</h1>
+<pre><code>Failure:
+      assert { g(f(14, 2), 4) == 3.14.to_i + 0.14 }
+               | |            |       |    |
+               | |            |       |    3.14
+               | |            |       3
+               | |            false
+               | 12
+               3
+test_power_assert(TestA)
+/home/username/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/power_as(略)
+test/test_a.rb:14:in `test_power_assert&#39;
+     11:   end
+     12: 
+     13:   def test_power_assert
+  =&gt; 14:     assert { g(f(14, 2), 4) == 3.14.to_i + 0.14 }
+     15:   end
+     16: end</code></pre>
+</div>
+<div id="見よこの美しいエラー表示を-1" class="slide section level1">
+<h1>見よこの美しいエラー表示を</h1>
+<div class="figure">
+<img src="power-assert.png" alt="power-assert" />
+<p class="caption">power-assert</p>
+</div>
+</div>
+<div id="データ駆動テスト出来る" class="slide section level1">
+<h1>データ駆動テスト出来る</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">TestRubicureFuzzyMatch</span> &lt; <span class="dt">Test</span>::<span class="dt">Unit</span>::<span class="dt">TestCase</span>
+  data(
+    <span class="st">&quot;ふたり&quot;</span>      =&gt; [<span class="st">&quot;ふたり&quot;</span>     , <span class="st">&quot;ふたりはプリキュア&quot;</span>            ],
+    <span class="st">&quot;初代&quot;</span>        =&gt; [<span class="st">&quot;初代&quot;</span>       , <span class="st">&quot;ふたりはプリキュア&quot;</span>            ],
+    ...
+    <span class="st">&quot;姫プリ&quot;</span>      =&gt; [<span class="st">&quot;姫プリ&quot;</span>     , <span class="st">&quot;Go!プリンセスプリキュア&quot;</span>       ])
+  test <span class="st">&#39;.regularize&#39;</span> <span class="kw">do</span> |(input, expected)|
+    assert_equal expected, <span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize(input)
+  <span class="kw">end</span>
+  ...
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="section-1" class="slide section level1">
+<h1></h1>
+<p>さすがにコピペでは無理になってきたのでここからはもう書き下ろしする</p>
+</div>
+<div id="分配束縛について" class="slide section level1">
+<h1>分配束縛について</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">data(
+  <span class="st">&quot;a&quot;</span> =&gt; [<span class="dv">1</span>, <span class="dv">2</span>],
+  <span class="st">&quot;b&quot;</span> =&gt; [<span class="dv">3</span>, <span class="dv">4</span>],
+  <span class="st">&quot;c&quot;</span> =&gt; [<span class="dv">5</span>, <span class="dv">6</span>])
+test <span class="st">&#39;&#39;</span> <span class="kw">do</span> |data|
+  p data
+<span class="kw">end</span>
+
+<span class="co">#=&gt;</span>
+<span class="co"># [1, 2]</span>
+<span class="co"># [3, 4]</span>
+<span class="co"># [5, 6]</span></code></pre></div>
+</div>
+<div id="分配束縛について-1" class="slide section level1">
+<h1>分配束縛について</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">data(
+  <span class="st">&quot;a&quot;</span> =&gt; [<span class="dv">1</span>, <span class="dv">2</span>],
+  <span class="st">&quot;b&quot;</span> =&gt; [<span class="dv">3</span>, <span class="dv">4</span>],
+  <span class="st">&quot;c&quot;</span> =&gt; [<span class="dv">5</span>, <span class="dv">6</span>])
+test <span class="st">&#39;&#39;</span> <span class="kw">do</span> |(x, y)|
+  p [y, x]
+<span class="kw">end</span>
+
+<span class="co">#=&gt;</span>
+<span class="co"># [2, 1]</span>
+<span class="co"># [4, 3]</span>
+<span class="co"># [6, 5]</span></code></pre></div>
+<p>こう書ける</p>
+</div>
+<div id="分配束縛について-2" class="slide section level1">
+<h1>分配束縛について</h1>
+<p>今まではこうだった</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">TestRubicureFuzzyMatch</span> &lt; <span class="dt">Test</span>::<span class="dt">Unit</span>::<span class="dt">TestCase</span>
+  data(
+    <span class="st">&quot;姫プリ&quot;</span> =&gt; [<span class="st">&quot;姫プリ&quot;</span> , <span class="st">&quot;Go!プリンセスプリキュア&quot;</span>])
+  test <span class="st">&#39;.regularize&#39;</span> <span class="kw">do</span> |data|
+    assert_equal data[<span class="dv">1</span>], <span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize(data[<span class="dv">0</span>])
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="分配束縛について-3" class="slide section level1">
+<h1>分配束縛について</h1>
+<p>こっちの方が意味が分かりやすい</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">TestRubicureFuzzyMatch</span> &lt; <span class="dt">Test</span>::<span class="dt">Unit</span>::<span class="dt">TestCase</span>
+  data(
+    <span class="st">&quot;姫プリ&quot;</span> =&gt; [<span class="st">&quot;姫プリ&quot;</span> , <span class="st">&quot;Go!プリンセスプリキュア&quot;</span>])
+  test <span class="st">&#39;.regularize&#39;</span> <span class="kw">do</span> |(input, expected)|
+    assert_equal expected, <span class="dt">Rubicure</span>::<span class="dt">Seriese</span>.regularize(input)
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="test" class="slide section level1">
+<h1>test</h1>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">TestFoo</span> &lt; <span class="dt">Test</span>::<span class="dt">Unit</span>::<span class="dt">TestCase</span>
+  <span class="kw">def</span> test_foo
+    assert <span class="dv">true</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+<p>これだとテスト名前がメソッド名でなければならないという制限に引きずられる引きずられる</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">TestFoo</span> &lt; <span class="dt">Test</span>::<span class="dt">Unit</span>::<span class="dt">TestCase</span>
+  test <span class="st">&#39;foo&#39;</span> <span class="kw">do</span>
+    assert <span class="dv">true</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+<p>こう書ける(RSpecの<code>it</code>みたいな)</p>
+</div>
+<div id="ネタが尽きた" class="slide section level1">
+<h1>ネタが尽きた</h1>
+<p>まとめ</p>
+<p>RSpecもいいけどtest-unitもね</p>
+</div>
+</body>
+</html>
+<!-- Pandoc version:
+pandoc 1.15.0.6
+Compiled with texmath 0.8.2, highlighting-kate 0.6.
+Syntax highlighting is supported for the following languages:
+    abc, actionscript, ada, agda, apache, asn1, asp, awk, bash, bibtex, boo, c,
+    changelog, clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css,
+    curry, d, diff, djangotemplate, dockerfile, dot, doxygen, doxygenlua, dtd,
+    eiffel, email, erlang, fasm, fortran, fsharp, gcc, glsl, gnuassembler, go,
+    haskell, haxe, html, idris, ini, isocpp, java, javadoc, javascript, json,
+    jsp, julia, kotlin, latex, lex, lilypond, literatecurry, literatehaskell,
+    lua, m4, makefile, mandoc, markdown, mathematica, matlab, maxima, mediawiki,
+    metafont, mips, modelines, modula2, modula3, monobasic, nasm, noweb,
+    objectivec, objectivecpp, ocaml, octave, opencl, pascal, perl, php, pike,
+    postscript, prolog, pure, python, r, relaxng, relaxngcompact, rest, rhtml,
+    roff, ruby, rust, scala, scheme, sci, sed, sgml, sql, sqlmysql,
+    sqlpostgresql, tcl, tcsh, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
+    yacc, yaml, zsh
+Default user data directory: <DELETED>
+Copyright (C) 2006-2015 John MacFarlane
+Web:  http://pandoc.org
+This is free software; see the source for copying conditions.
+There is no warranty, not even for merchantability or fitness
+for a particular purpose.
+-->
