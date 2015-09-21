@@ -339,7 +339,7 @@ class TestFoo < Test::Unit::TestCase
 end
 ```
 
-これだとテスト名前がメソッド名でなければならないという制限に引きずられる引きずられる
+これだとテスト名前がメソッド名でなければならないという制限に引きずられる
 
 ```ruby
 class TestFoo < Test::Unit::TestCase
